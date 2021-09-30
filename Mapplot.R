@@ -23,9 +23,10 @@ us <- map_data("state")
 # Map plot
 map_plot <- ggplot(us)  + geom_map(map=us, fill="white", color="black" , aes(map_id=region))
 map_plot <- map_plot + geom_point(data = cities ,aes(x = Longitude, y =Latitude , size=Population) )                                                            
-map_plot <- map_plot + coord_map() + expand_limits(x = us$long, y=us$lat) +ggtitle("Population of US Cities") 
+map_plot <- map_plot + coord_map() + expand_limits(x = us$long, y=us$lat) +ggtitle("Population of US Cities")+ guides(size=guide_legend("Population (M)"))
 map_plot <- map_plot + theme(axis.line=element_blank(),axis.text.x=element_blank(),
-                                   axis.text.y=element_blank(),axis.ticks=element_blank(),
+                                   axis.title.y=element_blank(),axis.text.y=element_blank(),
+                                   axis.ticks=element_blank(),
                                    axis.title.x=element_blank())
 
 map_plot
