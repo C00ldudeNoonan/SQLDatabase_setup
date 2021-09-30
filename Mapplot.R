@@ -19,6 +19,7 @@ cities <- DBI::dbGetQuery(con,"SELECT TOP 20
 # changing long/lat to numeric
 cities$Latitude <- as.numeric(cities$Latitude)
 cities$Longitude <- as.numeric(cities$Longitude)
+cities$Population <- cities$Population/1000000
 us <- map_data("state") 
 # Map plot
 map_plot <- ggplot(us)  + geom_map(map=us, fill="white", color="black" , aes(map_id=region))
